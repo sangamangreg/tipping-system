@@ -3,7 +3,7 @@
 This project is created for presentation purpose to Gumroad. Please read the project assumptions.
 
 ### Introduction Video:
-
+<a target="_blank" href="https://youtu.be/_HeeIM5njGo?si=0IFzL9ao_RWuNNou"><img width="100" src="https://t3.ftcdn.net/jpg/04/74/05/94/360_F_474059464_qldYuzxaUWEwNTtYBJ44VN89ARuFktHW.jpg"></a>
 
 ### Aussumptions:
 - This project is to demonstrate only tipping system.
