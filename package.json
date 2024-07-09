@@ -1,0 +1,7 @@
+{
+  "name": "app",
+  "private": "true",
+  "scripts": {
+    "build": "sass ./app/assets/stylesheets/design.sass.scss:./app/assets/builds/design.css"
+  }
+}
