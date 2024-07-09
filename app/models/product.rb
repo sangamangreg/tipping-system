@@ -15,4 +15,10 @@ class Product < ApplicationRecord
   def average_rating
     reviews.average(:rating).to_i
   end
+
+  def calculate_tip(percent)
+    price + ((price * percent) / 100).round(2)
+  rescue StandardError
+    price
+  end
 end

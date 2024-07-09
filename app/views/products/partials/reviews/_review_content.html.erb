@@ -1,0 +1,21 @@
+<% reviews.each do |review| %>
+  <% if review.content %>
+    <section style="display: grid; gap: var(--spacer-2);">
+      <span class="rating" aria-label="<%= review.rating %> stars">
+        <%= render :partial => "products/partials/reviews/star", :locals => {:average_rating => review.rating} %>
+      </span>
+      <%= review.content %>
+      <section style="display: flex; gap: var(--spacer-1); align-items: center; flex-wrap: wrap;">
+        <section class="user">
+          <img class="user-avatar" src="https://assets.gumroad.com/assets/gumroad-default-avatar-5-623b6723477dd15920db554b0a4e9aac6a5e41159fd3d7bb4c9f9745a44e4f85.png">
+          <h5>Anonymous</h5></section>
+        <span class="has-tooltip">
+          <span aria-describedby=":r0:" style="display: contents;">
+            <time class="text-muted" style="cursor: default;"><%= distance_of_time_in_words(review.created_at, Time.now) %></time>
+          </span>
+          <span role="tooltip" id=":r0:"><%= review.created_at.strftime('%B %d, %Y') %></span>
+        </span>
+      </section>
+    </section>
+  <% end %>
+<% end %>

@@ -1,0 +1,12 @@
+<section>
+  <header><h3>Ratings</h3>
+    <div class="rating"><span class="icon icon-solid-star"></span>
+      <div class="rating-average"> <%= product.average_rating %> </div>
+      (<!-- --> <%= product.reviews.length %> ratings<!-- --> )
+    </div>
+  </header>
+  <%= render :partial => "products/partials/reviews/star_details", :locals => {:reviews => product.reviews, :average_rating => product.average_rating } %>
+  <section class="paragraphs" style="margin-top: var(--spacer-2);">
+    <%= render :partial => "products/partials/reviews/review_content", :locals => {:reviews => product.reviews, :average_rating => product.average_rating } %>
+  </section>
+</section>

@@ -1,0 +1,10 @@
+<div class="stack">
+<% props.each do |heading, desc| %>
+    <div>
+      <% unless heading == 'info' %>
+        <h5><%= heading.capitalize %></h5>
+      <% end %>
+      <div><%= desc %></div>
+    </div>
+<% end %>
+</div>
