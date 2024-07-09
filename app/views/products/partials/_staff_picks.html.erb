@@ -1,0 +1,3 @@
+<% @staff_picks.each do | product | %>
+  <%= render :partial => "products/partials/card", :locals => {:product => product} %>
+<% end %>

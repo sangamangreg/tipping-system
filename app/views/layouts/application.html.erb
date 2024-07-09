@@ -1,1 +1,27 @@
-<%= yield %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag :design, "data-turbo-track": "reload" %>
+  </head>
+
+  <div class="react-entry-point" style="display:contents" id="Discover-react-component">
+    <main style="min-height:100vh;display:grid;grid-template-rows:auto 1fr auto">
+      <header class="hero">
+        <div class="hero-actions">
+          <a class="logo-full" href="/"></a>
+          <div class="combobox" style="flex-grow:1">
+          </div>
+            <a href="/" class="button">Login</a>
+            <a href="/" class="button primary" style="margin-left: 10px;">Start selling</a>
+        </div>
+      </header>
+      <%= yield %>
+    </main>
+  </div>
+  <body>
+  </body>
+</html>
