@@ -1,0 +1,58 @@
+<%
+  price = @product.price.to_s
+  currency = ProductsHelper.currency_symbol(@product.currency)
+%>
+<section style="position:relative">
+  <article class="product">
+    <div class="preview-container carousel" aria-label="Product preview">
+      <div class="items" style="height: 758px;">
+        <div class="preview-content" role="tabpanel" id="eda0de4f4c099697c7e75005272d2acd">
+          <img class="preview" src="https://public-files.gumroad.com/3wgknwj6i4yhel42umkqk3bflx2q" itemprop="image" style="max-width: 100%;">
+        </div>
+      </div>
+    </div>
+    <section>
+      <header><h1 itemprop="name"><%= @product.title %>.</h1></header>
+      <section class="details">
+        <div itemscope="" itemprop="offers" itemtype="https://schema.org/Offer" style="display:flex;align-items:center">
+          <div class="has-tooltip right" aria-describedby=":R576:">
+            <div class="price" itemprop="price" content="<%= price %>"><%= currency %><%= price %></div>
+            <div role="tooltip" id=":R576:"><%= currency %><%= price %></div>
+          </div>
+          <link itemprop="url" href="/products/<%= @product.id %>">
+          <div itemprop="availability" hidden="">https://schema.org/InStock</div>
+          <div itemprop="priceCurrency" hidden=""><%= currency %></div>
+          <div itemprop="seller" itemtype="https://schema.org/Person" hidden="">
+          <div itemprop="name" hidden=""><%= @product.user.name %></div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--spacer-2);flex-wrap:wrap">
+          <a href="/" class="user" style="position:relative" rel="noreferrer">
+            <img class="user-avatar" src="https://assets.gumroad.com/assets/gumroad-default-avatar-5-623b6723477dd15920db554b0a4e9aac6a5e41159fd3d7bb4c9f9745a44e4f85.png">
+            <%= @product.user.name %>
+          </a>
+        </div>
+        <div class="rating">
+          <%= render :partial => "products/partials/reviews/star", :locals => {:average_rating => @product.average_rating} %>
+          <span class="rating-number"><%= @product.reviews.length %> ratings</span>
+        </div>
+      </section>
+      <section>
+        <div class="rich-text">
+          <div contenteditable="false" translate="no" class="tiptap ProseMirror">
+            <%= @product.content.html_safe %>
+          </div>
+        </div>
+      </section>
+    </section>
+    <section>
+      <section>
+        <a class="accent button" target="_top" href="/prepare-checkout/<%= @product.id %>" style="align-items:unset">
+          Buy
+        </a>
+        <%= render :partial => "products/partials/props", :locals => {:props => @product.props} %>
+      </section>
+      <%= render :partial => "products/partials/reviews/product_review", :locals => {:product => @product} %>
+    </section>
+  </article>
+</section>

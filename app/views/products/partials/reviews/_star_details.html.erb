@@ -1,0 +1,14 @@
+<%
+  stars = {1=> 0, 2=> 0, 3=> 0, 4=> 0, 5=> 0}
+  reviews.each do | review |
+    stars[review.rating.to_i] = stars[review.rating.to_i] + 1
+  end
+%>
+<section class="histogram" aria-label="Ratings histogram">
+  <% 5.downto(1).each do | star | %>
+    <% percent = (100 * stars[star]) / reviews.length rescue 0 %>
+    <div><%= star %> stars</div>
+    <meter aria-label="<%= star %> stars" value="<%= (0.01 * percent).round(1) rescue 0%>"></meter>
+    <div><%= percent %>%</div>
+  <% end %>
+</section>

@@ -1,0 +1,42 @@
+<%= javascript_include_tag "application.js", "data-turbo-track": "reload", defer: true %>
+<% price = @product.currency.to_s + ProductsHelper.currency_symbol(@product.currency).to_s + tip.to_s %>
+<div style="display: grid; gap: var(--spacer-8);">
+  <div class="with-sidebar right" style="grid-auto-columns: minmax(26rem, 1fr);">
+    <div style="display: grid; gap: var(--spacer-5);">
+      <div class="cart" role="list">
+        <div role="listitem">
+          <section style="padding: 0;">
+            <figure>
+              <a href="/products/<%= @product.id %>">
+                <img src="https://public-files.gumroad.com/4rwh3jiwgdye3no3bgok6b6dutim" width="135" height="135">
+              </a>
+            </figure>
+          </section>
+          <section><a href="https://astralcodexten.gumroad.com/l/wbefjq"><h4><%= @product.title %></h4>
+          </a><a href="/products/<%= @product.id %>"><%= @product.user.name %></a>
+          </section>
+
+          <section><span class="current-price" aria-label="Price"><%= price %></span></section>
+        </div>
+        <div class="cart-summary">
+          <div><h4>Subtotal</h4>
+            <div><%= price %></div>
+          </div>
+        </div>
+        <footer><h4>Total</h4>
+          <div><%= price %></div>
+        </footer>
+      </div>
+      <div class="cart tip">
+        <h3>Please consider adding Tip</h3>
+        <div class="tip-options">
+          <a href="/prepare-checkout/<%= @product.id %>?percent=5" class="button <%= 'selected' if percent == 5 %>">5%</a>
+          <a href="/prepare-checkout/<%= @product.id %>?percent=10" class="button <%= 'selected' if percent  == 10 %>">10%</a>
+          <a href="/prepare-checkout/<%= @product.id %>?percent=15" class="button <%= 'selected' if percent  == 15 %>">15%</a>
+          <a href="/prepare-checkout/<%= @product.id %>" class="button <%= 'selected' unless percent %>">No Tip</a>
+        </div>
+      </div>
+    </div>
+    <%= render :partial => "products/partials/payment/payment_form", :locals => {:product => @product} %>
+  </div>
+</div>
