@@ -1,0 +1,39 @@
+<article class="product-card">
+  <a href="/products/<%= product.id %>" class="stretched-link" aria-label="<%= product.title %>">
+    <div class="carousel">
+      <div class="items">
+        <img src="https://public-files.gumroad.com/4rwh3jiwgdye3no3bgok6b6dutim">
+      </div>
+    </div>
+  </a>
+  <header>
+    <h4 itemprop="name"><%= product.title %></h4>
+    <a href="/products/<%= product.id %>" target="_blank" class="user" style="position:relative" rel="noreferrer">
+      <img class="user-avatar" src="https://assets.gumroad.com/assets/gumroad-default-avatar-5-623b6723477dd15920db554b0a4e9aac6a5e41159fd3d7bb4c9f9745a44e4f85.png">
+      <%= product.user.name %>
+    </a>
+    <div class="rating" aria-label="Rating" style="margin-top:var(--spacer-2)">
+      <span class="icon icon-solid-star"></span>
+      <span class="rating-average"><%= product.average_rating %></span>
+      <span title="5 ratings">(<%= product.reviews.length %>)</span>
+    </div>
+  </header>
+  <footer>
+    <div itemscope="" itemprop="offers" itemtype="https://schema.org/Offer" style="display:flex;align-items:center">
+      <div class="has-tooltip right" aria-describedby=":R23a:">
+        <div class="price" itemprop="price" content="<%= product.price %>">
+          <%= ProductsHelper.currency_symbol(product.currency) %><%= product.price %>
+        </div>
+        <div role="tooltip" id=":R23a:">
+          <%= ProductsHelper.currency_symbol(product.currency) %><%= product.price %>
+        </div>
+      </div>
+      <link itemprop="url" href="/products/<%= product.id %>">
+      <div itemprop="availability" hidden="">https://schema.org/InStock</div>
+      <div itemprop="priceCurrency" hidden=""><%= product.currency %></div>
+      <div itemprop="seller" itemtype="https://schema.org/Person" hidden="">
+        <div itemprop="name" hidden=""><%= product.user.name %></div>
+      </div>
+    </div>
+  </footer>
+</article>
